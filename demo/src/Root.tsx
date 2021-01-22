@@ -1,3 +1,4 @@
 import React from 'react'
+import test from '/test.svg'
 
-export const Root = () => <div>Hello world</div>
+export const Root = () => <img src={test} />

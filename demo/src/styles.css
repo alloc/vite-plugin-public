@@ -6,3 +6,7 @@ body {
   background: darkslateblue;
   padding-top: 200px;
 }
+
+.test2 {
+  background-image: url('/test.svg');
+}
