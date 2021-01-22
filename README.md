@@ -14,7 +14,13 @@ The `publicHash` plugin helps you add content hashes to all or some files
 from the `/public` directory.
 
 #### Options
-- `ignore?: RegExp`
+
+- `ignore?: RegExp`  
+  Matching files are not hashed.
+
+- `skipRename?: boolean`  
+  Rewrite URLs but skip renaming files in `outDir`.  
+  Useful when your Vite config is loaded more than once.
 
 ```ts
 import {publicHash} from 'vite-plugin-public'
