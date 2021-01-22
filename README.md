@@ -13,6 +13,8 @@
 The `publicHash` plugin helps you add content hashes to all or some files 
 from the `/public` directory.
 
+**Note:** This plugin depends on [#1647](https://github.com/vitejs/vite/pull/1647) and [#1648](https://github.com/vitejs/vite/pull/1648)
+
 #### Options
 
 - `ignore?: RegExp`  
