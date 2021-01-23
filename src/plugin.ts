@@ -10,19 +10,12 @@ export const publicHash = ({
   skipRename,
 }: { ignore?: RegExp; skipRename?: boolean } = {}): Plugin => {
   const builtMap = new Map<string, string>()
-  const builtUrls = new Set<string>()
 
   return {
     name: 'vite-public:hash',
     apply: 'build',
     enforce: 'pre',
-    resolveId: id => builtMap.get(id),
-    load(id) {
-      if (builtUrls.has(id)) {
-        id = id.slice(1)
-        return `export default ${JSON.stringify(id)}`
-      }
-    },
+    resolveBuiltUrl: id => builtMap.get(id),
     configResolved({ root, build: { base, outDir } }) {
       outDir = path.posix.resolve(root, outDir)
 
@@ -44,9 +37,8 @@ export const publicHash = ({
           renamed[file] = path.posix.join(outDir, hashedFile)
         }
 
-        const builtUrl = '!' + base + hashedFile
+        const builtUrl = base + hashedFile
         builtMap.set('/' + file, builtUrl)
-        builtUrls.add(builtUrl)
       }
 
       if (!skipRename)
