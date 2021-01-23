@@ -16,7 +16,7 @@ export const publicHash = ({
     apply: 'build',
     enforce: 'pre',
     resolveBuiltUrl: id => builtMap.get(id),
-    configResolved({ root, build: { base, outDir } }) {
+    configResolved({ root, base, build: { outDir } }) {
       outDir = path.posix.resolve(root, outDir)
 
       const publicDir = path.posix.join(root, 'public')
